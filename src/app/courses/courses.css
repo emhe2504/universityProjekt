@@ -34,3 +34,13 @@ table tr:nth-child(odd) {
 table a {
     color: black;
 }
+
+table button {
+    border: 1px solid #f7d1b6;
+    background-color: #f7d1b6;
+    cursor: pointer;
+}
+
+table button:active {
+    background-color: #f7f0eb;
+}

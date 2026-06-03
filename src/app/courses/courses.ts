@@ -24,8 +24,9 @@ export class Courses {
       const response = await this.coursesService.loadCourses(); //loadCourses returnerar kurser som promise
       this.courses.set(response);
 
-    }catch(error) {
+    } catch (error) {
       this.error.set("Kunde inte ladda kurser, försök igen senare.")
     }
   }
 }
+

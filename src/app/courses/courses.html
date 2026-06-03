@@ -11,8 +11,9 @@
         <th>Poäng:</th>
         <th>Ämne:</th>
         <th>Kursplan:</th>
+        <th>Lägg till:</th>
     </tr>
-    @for(course of courses(); track $index) {
+    @for(course of courses(); track $index; let i = $index) {
 
     <tr>
         <td>{{ course.courseCode }}</td>
@@ -20,6 +21,7 @@
         <td>{{ course.points }}</td>
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
+        <td><button [id]="'button-' + i">Lägg till</button></td>
     </tr>
     }
 </table>
