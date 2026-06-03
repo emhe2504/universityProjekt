@@ -1,1 +1,25 @@
 <h2>Våra kurser</h2>
+
+@if(error()) {
+<p>{{ error() }}</p>
+}
+
+<table>
+    <tr>
+        <th>Kurskod:</th>
+        <th>Kursnamn:</th>
+        <th>Poäng:</th>
+        <th>Ämne:</th>
+        <th>Kursplan:</th>
+    </tr>
+    @for(course of courses(); track $index) {
+
+    <tr>
+        <td>{{ course.courseCode }}</td>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.points }}</td>
+        <td>{{ course.subject }}</td>
+        <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
+    </tr>
+    }
+</table>

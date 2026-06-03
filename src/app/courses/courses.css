@@ -1,0 +1,36 @@
+h2 {
+    text-align: center;
+    margin: 6% 3% 3% 3%;
+    color: #574964;
+}
+
+table {
+    width: 80%;
+    margin: 1% auto;
+    text-align: left;
+    line-height: 3em;
+    letter-spacing: 1px;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+table tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+table td:nth-child(2) {
+    width: 35%;
+}
+
+table td:nth-child(4) {
+    width: 25%;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f7f0eb;
+}
+
+table a {
+    color: black;
+}
