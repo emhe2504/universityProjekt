@@ -4,8 +4,8 @@ import { Courses } from './courses/courses';
 import { Schedule } from './schedule/schedule';
 
 export const routes: Routes = [
-    { path: "Home", component: Home},
-    { path: "", redirectTo: "Home", pathMatch: "full"},
-    { path: "Courses", component: Courses},
-    { path: "Schedule", component: Schedule}
+    { path: "home", component: Home},
+    { path: "", redirectTo: "home", pathMatch: "full"},
+    { path: "courses", component: Courses},
+    { path: "schedule", component: Schedule}
 ];
