@@ -13,16 +13,16 @@ export class Courses {
   courses = signal<Course[]>([]); //signal som lagrar courses, startvärde tom array
   error = signal<string | null>(null); //signal som lagrar error, startvärde null
 
-
-  filterText = signal(""); //signal som lagrar sökfras
+  //signals - startvärden
+  filterText = signal("");
   sortChoice = signal("normal");
-
+  subjectChoice = signal("original");
 
   //En computed signal för alla filtrering och sortering
 
   filterAndSortCourses = computed(() => {
 
-    let result = this.courses();
+    let result = [...this.courses()]; //Array med värden från courses
 
 
     //Textfiltrering
@@ -37,29 +37,40 @@ export class Courses {
     }
 
 
-    
-    //Sortering via dropdown
-    const value = this.sortChoice();  //Det val vi gjort i listan
 
-    if (value === "normal" || value === "byCode") {
+    //Filtrering på ämne
+    const subjectValue = this.subjectChoice();
+
+    if (subjectValue !== "original") {
+      result = result.filter(c =>
+        c.subject === subjectValue);
+    }
+
+
+
+    //Sortering via dropdown
+    const sortValue = this.sortChoice();  //Det val vi gjort i listan
+
+    if (sortValue === "normal" || sortValue === "byCode") {
       return result.sort((a, b) => a.courseCode.localeCompare(b.courseCode));  //sortera på kurskod
     }
 
-    if (value === "byName") {
+    if (sortValue === "byName") {
       return result.sort((a, b) => a.courseName.localeCompare(b.courseName));  //sortera på kursnamn
     }
 
-    if (value === "byLowToHigh") {
+    if (sortValue === "byLowToHigh") {
       return result.sort((a, b) => a.points - b.points);  //sortera på poäng
     }
 
-    if (value === "byHighToLow") {
+    if (sortValue === "byHighToLow") {
       return result.sort((a, b) => b.points - a.points);  //sortera på poäng
     }
 
-    if (value === "bySubject") {
+    if (sortValue === "bySubject") {
       return result.sort((a, b) => a.subject.localeCompare(b.subject));  //sortera på ämne
     }
+
 
 
     return result;

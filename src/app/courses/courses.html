@@ -15,6 +15,78 @@
     </form>
 
     <form>
+        <label for="subjectSort">Ämne: </label>
+        <select id="subjectSort" [value]="subjectChoice()"
+            (change)="subjectChoice.set($any($event.target).value)">
+            <option value="original">Välj ämne.. </option>
+            <option value="Arkivkunskap">Arkivkunskap</option>
+            <option value="Arkiv- och informationsvetenskap">Arkiv- och informationsvetenskap</option>
+            <option value="Bild">Bild</option>
+            <option value="Bildjournalistik">Bildjournalistik</option>
+            <option value="Biologi">Biologi</option>
+            <option value="Byggnadsteknik">Byggnadsteknik</option>
+            <option value="Datateknik">Datateknik</option>
+            <option value="Datavetenskap">Datavetenskap</option>
+            <option value="Elektronik">Elektronik</option>
+            <option value="Elektroteknik">Elektroteknik</option>
+            <option value="Energiteknik">Energiteknik</option>
+            <option value="Engelska">Engelska</option>
+            <option value="Folkhälsovetenskap">Folkhälsovetenskap</option>
+            <option value="Fotografi">Fotografi</option>
+            <option value="Fysik">Fysik</option>
+            <option value="Företagsekonomi">Företagsekonomi</option>
+            <option value="Genusvetenskap">Genusvetenskap</option>
+            <option value="Geografi">Geografi</option>
+            <option value="Grafisk design">Grafisk design</option>
+            <option value="Grafisk teknik">Grafisk teknik</option>
+            <option value="Historia">Historia</option>
+            <option value="Hälso- och sjukvårdsadministration">Hälso- och sjukvårdsadministration</option>
+            <option value="Idrottsvetenskap">Idrottsvetenskap</option>
+            <option value="Industridesign">Industridesign</option>
+            <option value="Industriell organisation och ekonomi">Industriell organisation och ekonomi</option>
+            <option value="Informatik">Informatik</option>
+            <option value="Journalistik">Journalistik</option>
+            <option value="Juridik">Juridik</option>
+            <option value="Kemi">Kemi</option>
+            <option value="Kemiteknik">Kemiteknik</option>
+            <option value="Kriminologi">Kriminologi</option>
+            <option value="Kulturgeografi">Kulturgeografi</option>
+            <option value="Kvalitetledning">Kvalitetledning</option>
+            <option value="Kvalitetsteknik">Kvalitetsteknik</option>
+            <option value="Litteraturvetenskap">Litteraturvetenskap</option>
+            <option value="Ljudproduktion">Ljudproduktion</option>
+            <option value="Maskinteknik">Maskinteknik</option>
+            <option value="Matematik">Matematik</option>
+            <option value="Medicinsk vetenskap">Medicinsk vetenskap</option>
+            <option value="Medie- och kommunikationsvetenskap">Medie- och kommunikationsvetenskap</option>
+            <option value="Miljöteknik">Miljöteknik</option>
+            <option value="Miljövetenskap">Miljövetenskap</option>
+            <option value="Möbel- och byggnadshantverk">Möbel- och byggnadshantverk</option>
+            <option value="Nationalekonomi">Nationalekonomi</option>
+            <option value="Naturvetenskap">Naturvetenskap</option>
+            <option value="Omvårdnad">Omvårdnad</option>
+            <option value="Pedagogik">Pedagogik</option>
+            <option value="Psykologi">Psykologi</option>
+            <option value="Rehabiliteringsvetenskap">Rehabiliteringsvetenskap</option>
+            <option value="Religionsvetenskap">Religionsvetenskap</option>
+            <option value="Samhällskunskap">Samhällskunskap</option>
+            <option value="Socialt arbete">Socialt arbete</option>
+            <option value="Sociologi">Sociologi</option>
+            <option value="Spanska">Spanska</option>
+            <option value="Statistik">Statistik</option>
+            <option value="Statsvetenskap">Statsvetenskap</option>
+            <option value="Svenska som andraspråk">Svenska som andraspråk</option>
+            <option value="Svenska språket">Svenska språket</option>
+            <option value="Teknisk design">Teknisk design</option>
+            <option value="Teknisk fysik">Teknisk fysik</option>
+            <option value="Turismvetenskap">Turismvetenskap</option>
+            <option value="Vårdvetenskap">Vårdvetenskap</option>
+            <option value="Ämnesdidaktik i matematik och naturvetenskap">Ämnesdidaktik i matematik och naturvetenskap</option>
+            <option value="Övriga ämnen">Övriga ämnen</option>
+        </select>
+    </form>
+
+    <form>
         <label for="filterCourses">Filtrera produkter:</label>
         <br>
         <input type="text" id="filter" placeholder="Sökfras.." [value]="filterText()"

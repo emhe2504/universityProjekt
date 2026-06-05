@@ -30,6 +30,12 @@ select {
     padding: 3px;
 }
 
+#subjectSort {
+    width: 25%;
+    margin: 1% 0%;
+    padding: 4px;
+}
+
 table tr {
     border-bottom: 1px solid lightgrey;
 }
