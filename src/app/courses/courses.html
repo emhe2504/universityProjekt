@@ -13,6 +13,7 @@
             <option value="bySubject">Ämne (A-Ö)</option>
         </select>
     </form>
+
     <form>
         <label for="filterCourses">Filtrera produkter:</label>
         <br>
@@ -20,7 +21,7 @@
             (input)="filterText.set($any($event.target).value)">
     </form>
 
-    <p>Visar {{filteredCourses().length}} av {{courses().length}}</p>
+    <p>Visar {{filterAndSortCourses().length}} av {{courses().length}} kurser</p>
 </section>
 
 @if(error()) {
@@ -36,7 +37,7 @@
         <th>Kursplan:</th>
         <th>Lägg till:</th>
     </tr>
-    @for(course of sortCourses(); track $index; let i = $index) {
+    @for(course of filterAndSortCourses(); track $index; let i = $index) {
 
     <tr>
         <td>{{ course.courseCode }}</td>
