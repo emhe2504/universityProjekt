@@ -41,6 +41,6 @@ table button {
     cursor: pointer;
 }
 
-table button:active {
-    background-color: #f7f0eb;
+button.darker {
+    background-color: #f57921 !important;
 }

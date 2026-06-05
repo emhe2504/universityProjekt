@@ -28,5 +28,12 @@ export class Courses {
       this.error.set("Kunde inte ladda kurser, försök igen senare.")
     }
   }
+
+  isDarker: boolean[] = []; //Array som innehåller true/false
+
+  changeColor(i: number): void {
+
+    this.isDarker[i] = true;  //True vid klicka på knapp = class darker
+  }
 }
 
