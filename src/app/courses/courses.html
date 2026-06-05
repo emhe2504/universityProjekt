@@ -2,6 +2,18 @@
 
 <section id="filterSection">
     <form>
+        <label for="sortCourses">Sortera kurser: </label>
+        <select id="sortCourses" [value]="sortChoice()"
+            (change)="sortChoice.set($any($event.target).value)">
+            <option value="normal">Sortera.. </option>
+            <option value="byCode">Kurskod</option>
+            <option value="byName">Kursnamn</option>
+            <option value="byPoints">Poäng</option>
+            <option value="bySubject">Ämne</option>
+        </select>
+    </form>
+
+    <form>
         <label for="filterCourses">Filtrera produkter:</label>
         <br>
         <input type="text" id="filter" placeholder="Sökfras.." [value]="filterText()"
@@ -24,7 +36,7 @@
         <th>Kursplan:</th>
         <th>Lägg till:</th>
     </tr>
-    @for(course of filteredCourses(); track $index; let i = $index) {
+    @for(course of sortCourses(); track $index; let i = $index) {
 
     <tr>
         <td>{{ course.courseCode }}</td>
@@ -32,8 +44,8 @@
         <td>{{ course.points }}</td>
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
-        <td><button [id]="'button-' + i" [class.darker]="isDarker[i]" (click)="changeColor(i)">Lägg till</button></td>
         <!--Om class är darker, isDarker[]=true-->
+        <td><button [id]="'button-' + i" [class.darker]="isDarker[i]" (click)="changeColor(i)">Lägg till</button></td>
     </tr>
     }
 </table>
