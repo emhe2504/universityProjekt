@@ -34,7 +34,7 @@ export class Courses {
 
 
   sortCourses = computed(() => {
-    const coursesCopy = [...this.filteredCourses()]; //Allakurser från filteredCourses i ny array
+    const coursesCopy = [...this.filteredCourses()]; //Alla kurser från filteredCourses i ny array
     const value = this.sortChoice();  //Det val vi gjort i listan
 
     if (value === "byCode") {
@@ -45,12 +45,16 @@ export class Courses {
       return coursesCopy.sort((a, b) => a.courseName.localeCompare(b.courseName));  //sortera på kursnamn
     }
 
-    if (value === "byPoints") {
+    if (value === "byLowToHigh") {
       return coursesCopy.sort((a, b) => a.points - b.points);  //sortera på poäng
     }
 
+    if (value === "byHighToLow") {
+      return coursesCopy.sort((a, b) => b.points - a.points);  //sortera på poäng
+    }
+
     if (value === "bySubject") {
-      return coursesCopy.sort((a, b) => a.subject.localeCompare(b.subject));  //sortera på poäng
+      return coursesCopy.sort((a, b) => a.subject.localeCompare(b.subject));  //sortera på ämne
     }
 
     return coursesCopy;   //Annars orginalordning

@@ -6,13 +6,13 @@
         <select id="sortCourses" [value]="sortChoice()"
             (change)="sortChoice.set($any($event.target).value)">
             <option value="normal">Sortera.. </option>
-            <option value="byCode">Kurskod</option>
-            <option value="byName">Kursnamn</option>
-            <option value="byPoints">Poäng</option>
-            <option value="bySubject">Ämne</option>
+            <option value="byCode">Kurskod (A-Ö)</option>
+            <option value="byName">Kursnamn (A-Ö)</option>
+            <option value="byLowToHigh">Poäng (låg till hög)</option>
+            <option value="byHighToLow">Poäng (hög till låg)</option>
+            <option value="bySubject">Ämne (A-Ö)</option>
         </select>
     </form>
-
     <form>
         <label for="filterCourses">Filtrera produkter:</label>
         <br>

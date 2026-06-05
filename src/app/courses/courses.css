@@ -25,12 +25,17 @@ input[type="text"] {
     padding: 5px;
 }
 
+select {
+    width: 15%;
+    padding: 3px;
+}
+
 table tr {
     border-bottom: 1px solid lightgrey;
 }
 
 table td:nth-child(2) {
-    width: 35%;
+    width: 40%;
 }
 
 table td:nth-child(4) {
