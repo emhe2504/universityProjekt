@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Course } from '../models/courseInt';
 import { CoursesService } from '../services/courses';
 
@@ -12,6 +12,16 @@ export class Courses {
 
   courses = signal<Course[]>([]); //signal som lagrar courses, startvärde tom array
   error = signal<string | null>(null); //signal som lagrar error, startvärde null
+  filterText = signal("");
+  filteredCourses = computed(() => {
+    const filter = this.filterText().trim().toLowerCase();
+    if (!filter) return this.courses();
+
+    return this.courses().filter(c => 
+      c.courseName.toLowerCase().includes(filter) ||
+        c.courseCode.toLowerCase().includes(filter)
+    );
+  })
 
   coursesService = inject(CoursesService);
 

@@ -1,5 +1,16 @@
 <h2>Våra kurser</h2>
 
+<section id="filterSection">
+    <form>
+        <label for="filterCourses">Filtrera produkter:</label>
+        <br>
+        <input type="text" id="filter" placeholder="Sökfras.." [value]="filterText()"
+            (input)="filterText.set($any($event.target).value)">
+    </form>
+
+    <p>Visar {{filteredCourses().length}} av {{courses().length}}</p>
+</section>
+
 @if(error()) {
 <p>{{ error() }}</p>
 }
@@ -13,7 +24,7 @@
         <th>Kursplan:</th>
         <th>Lägg till:</th>
     </tr>
-    @for(course of courses(); track $index; let i = $index) {
+    @for(course of filteredCourses(); track $index; let i = $index) {
 
     <tr>
         <td>{{ course.courseCode }}</td>
@@ -21,7 +32,8 @@
         <td>{{ course.points }}</td>
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
-        <td><button [id]="'button-' + i" [class.darker]="isDarker[i]" (click)="changeColor(i)">Lägg till</button></td> <!--Om class är darker, isDarker[]=true-->
+        <td><button [id]="'button-' + i" [class.darker]="isDarker[i]" (click)="changeColor(i)">Lägg till</button></td>
+        <!--Om class är darker, isDarker[]=true-->
     </tr>
     }
 </table>
