@@ -14,8 +14,9 @@ export class Schedule {
     this.loadCourses();
   }
 
-  courseArray = signal<Course[]>([]);
 
+  courseArray = signal<Course[]>([]);
+  courseCount = signal(0);
 
   //Hämta kurser från localStorage (som sedan skrivs ut till skärmen)
   loadCourses(): void {
@@ -24,7 +25,15 @@ export class Schedule {
 
     if (savedCourses) {
 
-      this.courseArray.set(JSON.parse(savedCourses));
+      const current: Course[] = JSON.parse(savedCourses);
+      this.courseArray.set(current);
+
+      current.forEach(course => {
+
+        //Summera alla kursers poäng med reduce
+        const totalCount: number = current.reduce((total, course) => total + course.points, 0);
+        this.courseCount.set(totalCount);
+      });
     }
   }
 
