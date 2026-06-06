@@ -30,7 +30,7 @@ export class ScheduleService {
       courses = [...courses, course];
     }
 
-    //Spara i localStorage och uppdatera signal
+    //Spara i localStorage
     localStorage.setItem("savedCourses", JSON.stringify(courses));
     return courses;
   }

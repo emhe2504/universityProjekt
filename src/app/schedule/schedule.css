@@ -49,3 +49,45 @@ p {
     text-align: center;
     margin-top: 2%;
 }
+
+#tableWrapper {
+    width: 90%;
+    max-width: 95%;
+    overflow-x: auto;
+    margin: 4% auto;
+}
+
+@media screen and (max-width: 1300px) {
+
+    table {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+
+    h2 {
+        font-size: 22px;
+    }
+
+    table {
+        font-size: 12px;
+        margin-top: 3%;
+        min-width: 1050px;
+    }
+
+    table td:nth-child(2) {
+        width: 60%;
+    }
+
+    table button {
+        font-size: 11px;
+    }
+
+    #tableWrapper {
+        border: 2px solid black;
+        max-height: 75vh;
+        padding: 2%;
+    }
+
+}

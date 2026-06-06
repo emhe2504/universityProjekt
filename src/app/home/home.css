@@ -81,3 +81,56 @@ section div p {
 #small2 {
     font-size: 12px;
 }
+
+@media screen and (max-width: 1050px) {
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #calender {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    #picDiv,
+    #picDiv2 {
+        width: 82%;
+    }
+
+    #picDiv2 {
+        width: 70%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    h2 {
+        font-size: 18px;
+    }
+
+    ul {
+        width: 60%;
+    }
+
+    h3 {
+        margin-top: 10%;
+    }
+
+    #calenderHead {
+        margin-top: 15%;
+    }
+
+    #calender {
+        width: 85%;
+    }
+}
