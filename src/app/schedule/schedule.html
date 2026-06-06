@@ -1,1 +1,19 @@
 <h2>Ditt ramschema</h2>
+
+<table>
+    <tr>
+        <th>Kurskod:</th>
+        <th>Kursnamn:</th>
+        <th>Kurspoäng:</th>
+        <th>Ta bort:</th>
+    </tr>
+    @for(course of courseArray(); track $index; let i = $index) {
+
+    <tr>
+        <td>{{ course.courseCode }}</td>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.points }}</td>
+        <td><button [id]="'button-' + i" (click)="removeCourse(course)">Ta bort</button></td>
+    </tr>
+    }
+</table>

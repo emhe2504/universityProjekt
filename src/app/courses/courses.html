@@ -1,4 +1,5 @@
 <h2>Våra kurser</h2>
+<p id="headP">Tryck på "Lägg till" för att addera kurs till ditt ramschema</p>
 
 <section id="filterSection">
     <form>
@@ -118,7 +119,7 @@
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
         <!--Om class är darker, isDarker[]=true-->
-        <td><button [id]="'button-' + i" [class.darker]="isDarker[i]" (click)="changeColor(i)">Lägg till</button></td>
+        <td><button [id]="'button-' + i" (click)="selectCourse(course)">Lägg till</button></td>
     </tr>
     }
 </table>

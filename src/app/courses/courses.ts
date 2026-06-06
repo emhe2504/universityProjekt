@@ -18,7 +18,8 @@ export class Courses {
   sortChoice = signal("normal");
   subjectChoice = signal("original");
 
-  //En computed signal för alla filtrering och sortering
+
+  //En computed signal för all filtrering och sortering
 
   filterAndSortCourses = computed(() => {
 
@@ -97,11 +98,25 @@ export class Courses {
     }
   }
 
-  isDarker: boolean[] = []; //Array som innehåller true/false
 
-  changeColor(i: number): void {
 
-    this.isDarker[i] = true;  //True vid klicka på knapp = class darker
+  courseArray = signal<Course[]>([]);
+
+  selectCourse(course: any): void {
+
+    const saved: string | null = localStorage.getItem("savedCourses"); //Hämta om det redan finns lagrade kurser
+
+    if (saved) {
+      const currentCourses: Course[] = JSON.parse(saved);
+
+      const updatedArray: Course[] = [...currentCourses, course]  //Skapa array med nuvarande + ny kurs
+
+      this.courseArray.set(updatedArray); //uppdatera signal
+
+      localStorage.setItem("savedCourses", JSON.stringify(updatedArray)); //Spara uppdaterad array till localStorage
+    }
   }
 }
+
+
 
