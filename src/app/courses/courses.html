@@ -1,11 +1,11 @@
 <h2>Våra kurser</h2>
 <p id="headP">Tryck på "Lägg till" för att addera kurs till ditt ramschema</p>
+<p id="headP2">Inringad kurs = tillagd</p>
 
 <section id="filterSection">
     <form>
         <label for="sortCourses">Sortera kurser: </label>
-        <select id="sortCourses" [value]="sortChoice()"
-            (change)="sortChoice.set($any($event.target).value)">
+        <select id="sortCourses" [value]="sortChoice()" (change)="sortChoice.set($any($event.target).value)">
             <option value="normal">Sortera.. </option>
             <option value="byCode">Kurskod (A-Ö)</option>
             <option value="byName">Kursnamn (A-Ö)</option>
@@ -17,8 +17,7 @@
 
     <form>
         <label for="subjectSort">Ämne: </label>
-        <select id="subjectSort" [value]="subjectChoice()"
-            (change)="subjectChoice.set($any($event.target).value)">
+        <select id="subjectSort" [value]="subjectChoice()" (change)="subjectChoice.set($any($event.target).value)">
             <option value="original">Välj ämne.. </option>
             <option value="Arkivkunskap">Arkivkunskap</option>
             <option value="Arkiv- och informationsvetenskap">Arkiv- och informationsvetenskap</option>
@@ -82,7 +81,8 @@
             <option value="Teknisk fysik">Teknisk fysik</option>
             <option value="Turismvetenskap">Turismvetenskap</option>
             <option value="Vårdvetenskap">Vårdvetenskap</option>
-            <option value="Ämnesdidaktik i matematik och naturvetenskap">Ämnesdidaktik i matematik och naturvetenskap</option>
+            <option value="Ämnesdidaktik i matematik och naturvetenskap">Ämnesdidaktik i matematik och naturvetenskap
+            </option>
             <option value="Övriga ämnen">Övriga ämnen</option>
         </select>
     </form>
@@ -118,8 +118,10 @@
         <td>{{ course.points }}</td>
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
-        <!--Om class är darker, isDarker[]=true-->
-        <td><button [id]="'button-' + i" (click)="selectCourse(course)">Lägg till</button></td>
+        <!--addera klass chosen om kursens kurskod matchar någon kurs i chosenCourses-->
+        <td><button [id]="'button-' + i"
+                [class.chosen]="chosenCourses().some(c => c.courseCode === course.courseCode)"
+                (click)="selectCourse(course)">Lägg till</button></td>
     </tr>
     }
 </table>

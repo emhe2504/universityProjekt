@@ -99,9 +99,9 @@ export class Courses {
   }
 
 
+  chosenCourses = signal<Course[]>([]);
 
-  courseArray = signal<Course[]>([]);
-
+  //Lägga till kurs/kurser i localStorage
   selectCourse(course: any): void {
 
     const saved: string | null = localStorage.getItem("savedCourses"); //Hämta om det redan finns lagrade kurser
@@ -110,10 +110,15 @@ export class Courses {
       const currentCourses: Course[] = JSON.parse(saved);
 
       const updatedArray: Course[] = [...currentCourses, course]  //Skapa array med nuvarande + ny kurs
-
-      this.courseArray.set(updatedArray); //uppdatera signal
-
       localStorage.setItem("savedCourses", JSON.stringify(updatedArray)); //Spara uppdaterad array till localStorage
+
+      this.chosenCourses.set(updatedArray); //För class-styling
+
+    } else {
+      const updatedArray: Course[] = [course];
+      localStorage.setItem("savedCourses", JSON.stringify(updatedArray)); //Spara kurs till localStorage
+
+      this.chosenCourses.set(updatedArray); //För class-styling
     }
   }
 }

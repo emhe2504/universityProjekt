@@ -4,7 +4,12 @@ h2 {
     color: #574964;
 }
 
-#headP {
+#headP{
+    text-align: center;
+    margin-top: 2%;
+}
+
+#headP2 {
     text-align: center;
     margin-bottom: 3%;
 }
@@ -69,6 +74,6 @@ table button {
     border-radius: 5px;
 }
 
-button.darker {
+button.chosen {
     border: 2px solid #f57921 !important;
 }
