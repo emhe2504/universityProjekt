@@ -119,8 +119,7 @@
         <td>{{ course.subject }}</td>
         <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
         <!--addera klass chosen om kursens kurskod matchar någon kurs i chosenCourses-->
-        <td><button [id]="'button-' + i"
-                [class.chosen]="chosenCourses().some(c => c.courseCode === course.courseCode)"
+        <td><button [id]="'button-' + i" [class.chosen]="chosenCourses().some(c => c.courseCode === course.courseCode)"
                 (click)="selectCourse(course)">Lägg till</button></td>
     </tr>
     }

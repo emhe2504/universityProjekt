@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Course } from '../models/courseInt';
 import { CoursesService } from '../services/courses';
+import { ScheduleService } from '../services/schedule';
 
 @Component({
   selector: 'app-courses',
@@ -99,32 +100,15 @@ export class Courses {
   }
 
 
+  scheduleService = inject(ScheduleService);
   chosenCourses = signal<Course[]>([]);
 
-  //Lägga till kurs/kurser i localStorage
+  /**
+   * Valda kurser får border
+   */
   selectCourse(course: any): void {
 
-    const saved: string | null = localStorage.getItem("savedCourses"); //Hämta om det redan finns lagrade kurser
-
-    let updatedArray: Course[] = []; //Först tom
-
-    //Om sparade kurser, lägg till i updatedArray
-    if (saved) {
-      const currentCourses: Course[] = JSON.parse(saved);
-      updatedArray = [...currentCourses];
-    }
-
-    //Kontrollera så kurs inte redan är tillagd
-    const containsCourse = updatedArray.some(c => c.courseCode === course.courseCode);
-
-    //Om inte, lägg till
-    if (!containsCourse) {
-      updatedArray = [...updatedArray, course];
-    }
-
-    //Spara i localStorage och uppdatera signal
-    localStorage.setItem("savedCourses", JSON.stringify(updatedArray));
-    this.chosenCourses.set(updatedArray);
+    this.chosenCourses.set(this.scheduleService.addCourse(course));
   }
 }
 

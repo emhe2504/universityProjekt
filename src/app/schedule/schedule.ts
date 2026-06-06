@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Course } from '../models/courseInt';
+import { ScheduleService } from '../services/schedule';
 
 @Component({
   selector: 'app-schedule',
@@ -9,51 +10,46 @@ import { Course } from '../models/courseInt';
 })
 export class Schedule {
 
+  scheduleService = inject(ScheduleService);
+
+  courseArray = signal<Course[]>([]);
+  courseCount = signal(0);
+
   //Körs när komponenten startar
   ngOnInit() {
     this.loadCourses();
   }
 
 
-  courseArray = signal<Course[]>([]);
-  courseCount = signal(0);
-
-  //Hämta kurser från localStorage (som sedan skrivs ut till skärmen)
+  /**
+   * Hämta kurser från getCourses-service
+   * Beräkna totalpoäng med reduce
+   */
   loadCourses(): void {
 
-    const savedCourses: string | null = localStorage.getItem("savedCourses");
+    const courses: Course[] = this.scheduleService.getCourses();
 
-    if (savedCourses) {
+    this.courseArray.set(courses)
 
-      const current: Course[] = JSON.parse(savedCourses);
-      this.courseArray.set(current);
-
-      current.forEach(course => {
-
-        //Summera alla kursers poäng med reduce
-        const totalCount: number = current.reduce((total, course) => total + course.points, 0);
-        this.courseCount.set(totalCount);
-      });
-    }
+    const totalCount: number = courses.reduce((total, course) => total + course.points, 0);
+    this.courseCount.set(totalCount);
   }
 
 
-  //Radera kurs från ramschema
-  removeCourse(deletedCourse: Course): void {
 
-    const fetchedCourses: string | null = localStorage.getItem("savedCourses"); //Hämta från localStorage
+  /**
+   * Radera kurs från ramschema via removeCourse-service
+   * Beräkna uppdaterad totalpoäng
+   */
+  removeCourse(course: Course): void {
 
-    if (fetchedCourses) {
+    const courses: Course[] = this.scheduleService.removeCourse(course);
 
-      const courses: Course[] = JSON.parse(fetchedCourses);
+    this.courseArray.set(courses); //Även uppdatera signal
 
-      const newCourses = courses.filter(course =>
-        course.courseCode !== deletedCourse.courseCode //Filtrera bort raderad kurs
-      );
-
-      localStorage.setItem("savedCourses", JSON.stringify(newCourses)); //Spara filtrerade kurser till localStorage
-      this.courseArray.set(newCourses); //Även uppdatera signal
-    }
+    const totalCount: number = courses.reduce((total, course) => total + course.points, 0);
+    this.courseCount.set(totalCount);
 
   }
+
 }
