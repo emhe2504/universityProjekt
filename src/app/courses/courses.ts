@@ -106,20 +106,25 @@ export class Courses {
 
     const saved: string | null = localStorage.getItem("savedCourses"); //Hämta om det redan finns lagrade kurser
 
+    let updatedArray: Course[] = []; //Först tom
+
+    //Om sparade kurser, lägg till i updatedArray
     if (saved) {
       const currentCourses: Course[] = JSON.parse(saved);
-
-      const updatedArray: Course[] = [...currentCourses, course]  //Skapa array med nuvarande + ny kurs
-      localStorage.setItem("savedCourses", JSON.stringify(updatedArray)); //Spara uppdaterad array till localStorage
-
-      this.chosenCourses.set(updatedArray); //För class-styling
-
-    } else {
-      const updatedArray: Course[] = [course];
-      localStorage.setItem("savedCourses", JSON.stringify(updatedArray)); //Spara kurs till localStorage
-
-      this.chosenCourses.set(updatedArray); //För class-styling
+      updatedArray = [...currentCourses];
     }
+
+    //Kontrollera så kurs inte redan är tillagd
+    const containsCourse = updatedArray.some(c => c.courseCode === course.courseCode);
+
+    //Om inte, lägg till
+    if (!containsCourse) {
+      updatedArray = [...updatedArray, course];
+    }
+
+    //Spara i localStorage och uppdatera signal
+    localStorage.setItem("savedCourses", JSON.stringify(updatedArray));
+    this.chosenCourses.set(updatedArray);
   }
 }
 
