@@ -10,7 +10,7 @@ Nya Universitet är ett fiktivt universitet som erbjuder utbildningar och kurser
 
 ____
 
-Förstasidan som innehåller information om universitetet. Exempel då delar på startsidan är information om universitetet, kurser de erbjuder, när universitetets ansökningsperiod är 
+Förstasidan som innehåller information om universitetet. Exempel på delar på startsidan är information om universitetet, kurser de erbjuder, när universitetets ansökningsperiod är 
 samt ett kalendarium med viktiga händelser.
 
 ____
