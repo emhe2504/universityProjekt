@@ -1,0 +1,38 @@
+h3 {
+    text-align: center;
+    margin: 2%;
+    color: #574964;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+nav li {
+    flex: 1;
+    text-align: center;
+}
+
+nav a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: #574964;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+nav a:hover {
+    font-weight: bold;
+}
+
+p {
+    text-align: center;
+    font-size: 10px;
+    color: #574964;
+    margin: 1%;
+}

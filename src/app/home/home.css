@@ -1,0 +1,136 @@
+h2 {
+    text-align: center;
+    margin: 6% 3% 3% 3%;
+    color: #574964;
+}
+
+#picDiv,
+#picDiv2 {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+#picDiv2 {
+    width: 50%;
+    margin-top: 5%;
+}
+
+picture {
+    flex: 1;
+}
+
+picture img {
+    display: block;
+    width: 100%;
+}
+
+p {
+    text-align: center;
+    width: 68ch;
+    margin: 0 auto;
+    margin-top: 4%;
+}
+
+#openTime {
+    margin-top: 1%;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 4%;
+    color: #574964;
+}
+
+ul {
+    width: fit-content;
+    margin: 2% auto;
+    padding: 4% 15%;
+    background-color: #C8AAAA;
+    border-radius: 15px;
+    line-height: 2em;
+}
+
+#calenderHead {
+    margin: 6% auto 0;
+}
+
+#calender {
+    display: flex;
+    width: 95%;
+    margin: 2% auto;
+    gap: 25px;
+}
+
+section div {
+    flex: 1;
+    border: 1px solid #574964;
+    padding: 1%;
+    border-radius: 15px;
+}
+
+section div p {
+    margin: 1%;
+    text-align: center;
+    width: 80%;
+    margin: 1% auto;
+}
+
+#small1,
+#small2 {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 1050px) {
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #calender {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    #picDiv,
+    #picDiv2 {
+        width: 82%;
+    }
+
+    #picDiv2 {
+        width: 70%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    h2 {
+        font-size: 18px;
+    }
+
+    ul {
+        width: 60%;
+    }
+
+    h3 {
+        margin-top: 10%;
+    }
+
+    #calenderHead {
+        margin-top: 15%;
+    }
+
+    #calender {
+        width: 85%;
+    }
+}
